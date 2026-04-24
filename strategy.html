@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Strategy</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    background: #0f172a;
+}
+
+/* BACKGROUND BLOBS */
+body::before, body::after {
+    content: "";
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.6;
+}
+
+body::before {
+    background: #6366f1;
+    top: -50px;
+    left: -50px;
+}
+
+body::after {
+    background: #22d3ee;
+    bottom: -50px;
+    right: -50px;
+}
+
+/* BACK BUTTON */
+.back-btn {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    text-decoration: none;
+    color: white;
+    background: rgba(255,255,255,0.1);
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    backdrop-filter: blur(10px);
+    transition: 0.3s;
+}
+
+.back-btn:hover {
+    background: rgba(255,255,255,0.25);
+    transform: translateX(-3px);
+}
+
+/* CENTER */
+.center {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* GLASS BOX */
+.box {
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(20px);
+    padding: 35px 25px;
+    border-radius: 25px;
+    text-align: center;
+    width: 320px;
+    color: white;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+}
+
+/* INPUT */
+.input-box {
+    position: relative;
+    margin-top: 18px;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 12px;
+    border: none;
+    outline: none;
+}
+
+/* EYE */
+.eye {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+}
+
+/* BUTTON */
+button {
+    margin-top: 20px;
+    padding: 12px;
+    width: 100%;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg,#6366f1,#8b5cf6);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+/* ERROR */
+#error {
+    margin-top: 10px;
+    color: #ff4d4d;
+    display: none;
+}
+
+/* FOOTER */
+.footer {
+    text-align: center;
+    padding: 20px;
+}
+
+.footer-box {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 50px;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+}
+
+.copyright {
+    font-size: 13px;
+    color: #c7d2fe;
+}
+
+.credit {
+    font-size: 11px;
+    opacity: 0.7;
+}
+</style>
+
+<script>
+function checkPassword() {
+    let pass = document.getElementById("password").value;
+
+    if(pass === "smartstudy@000") {
+        window.location.href = "strategy-main.html";
+    } else {
+        document.getElementById("error").style.display = "block";
+    }
+}
+
+function togglePassword() {
+    let input = document.getElementById("password");
+    let eye = document.getElementById("eyeIcon");
+
+    if(input.type === "password") {
+        input.type = "text";
+        eye.innerHTML = "🙈";
+    } else {
+        input.type = "password";
+        eye.innerHTML = "👁️";
+    }
+}
+</script>
+
+</head>
+
+<body>
+
+<!-- BACK BUTTON -->
+<a href="index.html" class="back-btn">← Back</a>
+
+<div class="center">
+
+    <!-- LOGIN -->
+    <div class="box">
+        <h2>🔒 Smart Strategy</h2>
+        <p>Enter password to continue</p>
+
+        <div class="input-box">
+            <input type="password" id="password" placeholder="Enter password">
+            <div class="eye" id="eyeIcon" onclick="togglePassword()">👁️</div>
+        </div>
+
+        <button onclick="checkPassword()">Unlock</button>
+        <p id="error">❌ Wrong Password</p>
+    </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+    <div class="footer-box">
+        <p class="copyright">© 2026–27 Smart Study Hub</p>
+        <p class="credit">- By Chirag Nemade</p>
+    </div>
+</div>
+
+</body>
+</html>
